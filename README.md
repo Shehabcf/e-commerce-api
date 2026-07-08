@@ -22,7 +22,7 @@ A complete e-commerce backend built with Node.js, Express.js, MongoDB, and Mongo
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/USERNAME/ecommerce-api.git
+   git clone https://github.com/Shehabcf/ecommerce-api.git
    cd ecommerce-api
    ```
 2. Install dependencies:
