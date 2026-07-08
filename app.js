@@ -13,7 +13,11 @@ const orderRoutes = require("./routes/order.routes");
 const app = express();
 
 app.use(express.json());
-app.use(mongoSanitize());
+app.use((req, res, next) => {
+  if (req.body) req.body = mongoSanitize.sanitize(req.body);
+  if (req.params) req.params = mongoSanitize.sanitize(req.params);
+  next();
+});
 
 app.use("/api/categories", categoryRoutes);
 app.use("/api/products", productRoutes);
