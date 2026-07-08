@@ -13,6 +13,7 @@ const orderRoutes = require("./routes/order.routes");
 const app = express();
 
 app.use(express.json());
+// Express 5 makes req.query read-only, so we sanitize body/params only
 app.use((req, res, next) => {
   if (req.body) req.body = mongoSanitize.sanitize(req.body);
   if (req.params) req.params = mongoSanitize.sanitize(req.params);
