@@ -11,44 +11,146 @@
           "name": "Get All Categories",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/categories"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Categories fetched\",\n  \"data\": [\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4cf\",\n      \"name\": \"Electronics\",\n      \"description\": \"Electronic devices\",\n      \"slug\": \"electronics\",\n      \"createdAt\": \"2026-07-08T12:16:58.842Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.842Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d0\",\n      \"name\": \"Clothing\",\n      \"description\": \"Fashion items\",\n      \"slug\": \"clothing\",\n      \"createdAt\": \"2026-07-08T12:16:58.875Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.875Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d1\",\n      \"name\": \"Books\",\n      \"description\": \"Books and literature\",\n      \"slug\": \"books\",\n      \"createdAt\": \"2026-07-08T12:16:58.875Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.875Z\"\n    }\n  ]\n}"
+            }
+          ]
         },
         {
           "name": "Get Category By ID",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/categories/{{categoryId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories/{{categoryId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories", "{{categoryId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Category fetched\",\n  \"data\": {\n    \"_id\": \"6a4e3fbaa3ede11919c6b4cf\",\n    \"name\": \"Electronics\",\n    \"description\": \"Electronic devices\",\n    \"slug\": \"electronics\",\n    \"createdAt\": \"2026-07-08T12:16:58.842Z\",\n    \"updatedAt\": \"2026-07-08T12:16:58.842Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (404)",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Category not found\"\n}"
+            }
+          ]
         },
         {
           "name": "Create Category",
           "request": {
             "method": "POST",
-            "url": "{{baseUrl}}/categories",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices\",\n  \"slug\": \"electronics\"\n}"
+              "raw": "{\n  \"name\": \"Test Category\",\n  \"description\": \"Test desc\",\n  \"slug\": \"test-cat\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (201)",
+              "status": "Created",
+              "code": 201,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Category created\",\n  \"data\": {\n    \"name\": \"Test Category\",\n    \"description\": \"Test desc\",\n    \"slug\": \"test-cat\",\n    \"_id\": \"6a4e400b6d5ccbf63e8bba4d\",\n    \"createdAt\": \"2026-07-08T12:18:19.930Z\",\n    \"updatedAt\": \"2026-07-08T12:18:19.930Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (409)",
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Duplicate value for field: name\"\n}"
+            }
+          ]
         },
         {
           "name": "Update Category",
           "request": {
             "method": "PATCH",
-            "url": "{{baseUrl}}/categories/{{categoryId}}",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Updated Category\",\n  \"description\": \"Updated description\"\n}"
+              "raw": "{\n  \"name\": \"Updated Category\",\n  \"description\": \"Updated desc\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/categories/{{categoryId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories", "{{categoryId}}"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Category updated\",\n  \"data\": {\n    \"_id\": \"6a4e400b6d5ccbf63e8bba4d\",\n    \"name\": \"Updated Category\",\n    \"description\": \"Updated desc\",\n    \"slug\": \"test-cat\",\n    \"createdAt\": \"2026-07-08T12:18:19.930Z\",\n    \"updatedAt\": \"2026-07-08T12:18:19.994Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Delete Category",
           "request": {
             "method": "DELETE",
-            "url": "{{baseUrl}}/categories/{{categoryId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/categories/{{categoryId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["categories", "{{categoryId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Category deleted\",\n  \"data\": null\n}"
+            }
+          ]
         }
       ]
     },
@@ -59,51 +161,176 @@
           "name": "Get All Products",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/products"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["products"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Products fetched\",\n  \"data\": [\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d2\",\n      \"name\": \"Laptop\",\n      \"description\": \"Gaming laptop\",\n      \"price\": 15000,\n      \"stock\": 10,\n      \"category\": \"6a4e3fbaa3ede11919c6b4cf\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.891Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.891Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d3\",\n      \"name\": \"Smartphone\",\n      \"description\": \"Android phone\",\n      \"price\": 8000,\n      \"stock\": 15,\n      \"category\": \"6a4e3fbaa3ede11919c6b4cf\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.892Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.892Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d4\",\n      \"name\": \"T-Shirt\",\n      \"description\": \"Cotton shirt\",\n      \"price\": 250,\n      \"stock\": 50,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d0\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.892Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.892Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d5\",\n      \"name\": \"Jeans\",\n      \"description\": \"Denim jeans\",\n      \"price\": 450,\n      \"stock\": 30,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d0\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.892Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.892Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d6\",\n      \"name\": \"Novel\",\n      \"description\": \"Fiction book\",\n      \"price\": 120,\n      \"stock\": 40,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d1\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.893Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.893Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d7\",\n      \"name\": \"Textbook\",\n      \"description\": \"Educational book\",\n      \"price\": 300,\n      \"stock\": 20,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d1\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.893Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.893Z\"\n    }\n  ]\n}"
+            }
+          ]
         },
         {
           "name": "Get Products with Filters",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/products?category={{categoryId}}&minPrice=100&maxPrice=1000&inStock=true&search=phone"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?category={{categoryId}}&minPrice=100&maxPrice=1000&inStock=true&search=phone",
+              "host": ["{{baseUrl}}"],
+              "path": ["products"],
+              "query": [
+                { "key": "category", "value": "{{categoryId}}" },
+                { "key": "minPrice", "value": "100" },
+                { "key": "maxPrice", "value": "1000" },
+                { "key": "inStock", "value": "true" },
+                { "key": "search", "value": "phone" }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Products fetched\",\n  \"data\": [\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d4\",\n      \"name\": \"T-Shirt\",\n      \"description\": \"Cotton shirt\",\n      \"price\": 250,\n      \"stock\": 50,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d0\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.892Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.892Z\"\n    },\n    {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4d5\",\n      \"name\": \"Jeans\",\n      \"description\": \"Denim jeans\",\n      \"price\": 450,\n      \"stock\": 30,\n      \"category\": \"6a4e3fbaa3ede11919c6b4d0\",\n      \"inStock\": true,\n      \"createdAt\": \"2026-07-08T12:16:58.892Z\",\n      \"updatedAt\": \"2026-07-08T12:16:58.892Z\"\n    }\n  ]\n}"
+            }
+          ]
         },
         {
           "name": "Get Product By ID",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/products/{{productId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "{{productId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Product fetched\",\n  \"data\": {\n    \"_id\": \"6a4e3fbaa3ede11919c6b4d2\",\n    \"name\": \"Laptop\",\n    \"description\": \"Gaming laptop\",\n    \"price\": 15000,\n    \"stock\": 10,\n    \"category\": {\n      \"_id\": \"6a4e3fbaa3ede11919c6b4cf\",\n      \"name\": \"Electronics\",\n      \"description\": \"Electronic devices\"\n    },\n    \"inStock\": true,\n    \"createdAt\": \"2026-07-08T12:16:58.891Z\",\n    \"updatedAt\": \"2026-07-08T12:16:58.891Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (404)",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Product not found\"\n}"
+            }
+          ]
         },
         {
           "name": "Create Product",
           "request": {
             "method": "POST",
-            "url": "{{baseUrl}}/products",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"New Product\",\n  \"description\": \"Product description\",\n  \"price\": 99.99,\n  \"stock\": 10,\n  \"category\": \"{{categoryId}}\",\n  \"inStock\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["products"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (201)",
+              "status": "Created",
+              "code": 201,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Product created\",\n  \"data\": {\n    \"name\": \"Test Product\",\n    \"description\": \"Test product desc\",\n    \"price\": 99.99,\n    \"stock\": 5,\n    \"category\": \"6a4e3fbaa3ede11919c6b4cf\",\n    \"inStock\": true,\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4e\",\n    \"createdAt\": \"2026-07-08T12:18:20.303Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.303Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (404)",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Category not found, cannot create product\"\n}"
+            }
+          ]
         },
         {
           "name": "Update Product",
           "request": {
             "method": "PATCH",
-            "url": "{{baseUrl}}/products/{{productId}}",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"price\": 49.99,\n  \"stock\": 20\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "{{productId}}"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Product updated\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4e\",\n    \"name\": \"Test Product\",\n    \"description\": \"Test product desc\",\n    \"price\": 49.99,\n    \"stock\": 20,\n    \"category\": \"6a4e3fbaa3ede11919c6b4cf\",\n    \"inStock\": true,\n    \"createdAt\": \"2026-07-08T12:18:20.303Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.374Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Delete Product",
           "request": {
             "method": "DELETE",
-            "url": "{{baseUrl}}/products/{{productId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "{{productId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Product deleted\",\n  \"data\": null\n}"
+            }
+          ]
         }
       ]
     },
@@ -111,47 +338,158 @@
       "name": "Cart",
       "item": [
         {
-          "name": "Get Cart",
+          "name": "Get Cart (Empty)",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/cart"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success Empty (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Cart is empty\",\n  \"data\": {\n    \"items\": [],\n    \"totalPrice\": 0\n  }\n}"
+            },
+            {
+              "name": "Success With Items (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Cart fetched\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"items\": [\n      {\n        \"product\": {\n          \"_id\": \"6a4e3fbaa3ede11919c6b4d2\",\n          \"name\": \"Laptop\",\n          \"description\": \"Gaming laptop\",\n          \"price\": 15000,\n          \"stock\": 10,\n          \"inStock\": true\n        },\n        \"quantity\": 3,\n        \"price\": 15000\n      }\n    ],\n    \"totalPrice\": 45000,\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.575Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Add Item to Cart",
           "request": {
             "method": "POST",
-            "url": "{{baseUrl}}/cart/items",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart/items",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "items"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Item added to cart\",\n  \"data\": {\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"quantity\": 2,\n        \"price\": 15000\n      }\n    ],\n    \"totalPrice\": 30000,\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.459Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (400)",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Insufficient stock\"\n}"
+            }
+          ]
         },
         {
           "name": "Update Cart Item",
           "request": {
             "method": "PATCH",
-            "url": "{{baseUrl}}/cart/items/{{productId}}",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"quantity\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart/items/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "items", "{{productId}}"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Cart updated\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"quantity\": 3,\n        \"price\": 15000\n      },\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d3\",\n        \"quantity\": 1,\n        \"price\": 8000\n      }\n    ],\n    \"totalPrice\": 53000,\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.549Z\"\n  }\n}"
+            },
+            {
+              "name": "Success Removing (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Cart updated\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"quantity\": 3,\n        \"price\": 15000\n      }\n    ],\n    \"totalPrice\": 45000,\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.575Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Remove Item from Cart",
           "request": {
             "method": "DELETE",
-            "url": "{{baseUrl}}/cart/items/{{productId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart/items/{{productId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart", "items", "{{productId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Item removed\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"quantity\": 3,\n        \"price\": 15000\n      }\n    ],\n    \"totalPrice\": 45000,\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.575Z\"\n  }\n}"
+            }
+          ]
         },
         {
           "name": "Clear Cart",
           "request": {
             "method": "DELETE",
-            "url": "{{baseUrl}}/cart"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["cart"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Cart cleared\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba4f\",\n    \"items\": [],\n    \"totalPrice\": 0,\n    \"createdAt\": \"2026-07-08T12:18:20.444Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.617Z\"\n  }\n}"
+            }
+          ]
         }
       ]
     },
@@ -162,37 +500,132 @@
           "name": "Create Order",
           "request": {
             "method": "POST",
-            "url": "{{baseUrl}}/orders",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"shippingAddress\": \"123 Main Street, New York, NY\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (201)",
+              "status": "Created",
+              "code": 201,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Order created\",\n  \"data\": {\n    \"orderNumber\": \"ORD-1783513100713\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"name\": \"Laptop\",\n        \"price\": 15000,\n        \"quantity\": 2\n      },\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d4\",\n        \"name\": \"T-Shirt\",\n        \"price\": 250,\n        \"quantity\": 1\n      }\n    ],\n    \"totalPrice\": 30250,\n    \"status\": \"pending\",\n    \"shippingAddress\": \"123 Main Street, New York, NY\",\n    \"_id\": \"6a4e400c6d5ccbf63e8bba5e\",\n    \"createdAt\": \"2026-07-08T12:18:20.716Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.716Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (400)",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Cart is empty\"\n}"
+            }
+          ]
         },
         {
           "name": "Get All Orders",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/orders"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Orders fetched\",\n  \"data\": [\n    {\n      \"_id\": \"6a4e400c6d5ccbf63e8bba5e\",\n      \"orderNumber\": \"ORD-1783513100713\",\n      \"items\": [\n        {\n          \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n          \"name\": \"Laptop\",\n          \"price\": 15000,\n          \"quantity\": 2\n        },\n        {\n          \"product\": \"6a4e3fbaa3ede11919c6b4d4\",\n          \"name\": \"T-Shirt\",\n          \"price\": 250,\n          \"quantity\": 1\n        }\n      ],\n      \"totalPrice\": 30250,\n      \"status\": \"pending\",\n      \"shippingAddress\": \"123 Main Street, New York, NY\",\n      \"createdAt\": \"2026-07-08T12:18:20.716Z\",\n      \"updatedAt\": \"2026-07-08T12:18:20.716Z\"\n    }\n  ]\n}"
+            }
+          ]
         },
         {
           "name": "Get Order By ID",
           "request": {
             "method": "GET",
-            "url": "{{baseUrl}}/orders/{{orderId}}"
-          }
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders/{{orderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "{{orderId}}"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Order fetched\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba5e\",\n    \"orderNumber\": \"ORD-1783513100713\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"name\": \"Laptop\",\n        \"price\": 15000,\n        \"quantity\": 2\n      },\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d4\",\n        \"name\": \"T-Shirt\",\n        \"price\": 250,\n        \"quantity\": 1\n      }\n    ],\n    \"totalPrice\": 30250,\n    \"status\": \"pending\",\n    \"shippingAddress\": \"123 Main Street, New York, NY\",\n    \"createdAt\": \"2026-07-08T12:18:20.716Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.716Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (404)",
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Order not found\"\n}"
+            }
+          ]
         },
         {
           "name": "Update Order Status",
           "request": {
             "method": "PATCH",
-            "url": "{{baseUrl}}/orders/{{orderId}}/status",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"status\": \"confirmed\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/{{orderId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "{{orderId}}", "status"]
             }
-          }
+          },
+          "response": [
+            {
+              "name": "Success (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"message\": \"Order status updated\",\n  \"data\": {\n    \"_id\": \"6a4e400c6d5ccbf63e8bba5e\",\n    \"orderNumber\": \"ORD-1783513100713\",\n    \"items\": [\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d2\",\n        \"name\": \"Laptop\",\n        \"price\": 15000,\n        \"quantity\": 2\n      },\n      {\n        \"product\": \"6a4e3fbaa3ede11919c6b4d4\",\n        \"name\": \"T-Shirt\",\n        \"price\": 250,\n        \"quantity\": 1\n      }\n    ],\n    \"totalPrice\": 30250,\n    \"status\": \"confirmed\",\n    \"shippingAddress\": \"123 Main Street, New York, NY\",\n    \"createdAt\": \"2026-07-08T12:18:20.716Z\",\n    \"updatedAt\": \"2026-07-08T12:18:20.787Z\"\n  }\n}"
+            },
+            {
+              "name": "Error (400)",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                { "key": "Content-Type", "value": "application/json; charset=utf-8" }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"message\": \"Invalid status value\"\n}"
+            }
+          ]
         }
       ]
     }
